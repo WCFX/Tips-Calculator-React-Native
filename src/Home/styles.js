@@ -12,11 +12,6 @@ export const HeaderText = styled.Text`
   margin-bottom: 15px;
 `;
 
-export const FormInput = styled.View`
-  flex-direction: row;
-  margin-bottom: 50px;
-`;
-
 export const InputValue = styled.TextInput`
   width: 50%;
   margin: 0 20px;
@@ -24,31 +19,40 @@ export const InputValue = styled.TextInput`
   font-size: 18px;
   background-color: #eee;
   text-align: center;
-  border: 1px dashed #e9ee;
-  border-radius: 10px;
-  padding: 10px;
-`;
-export const InputTip = styled.TextInput`
-  width: 30%;
-  margin: 0 20px;
-  height: 50px;
-  font-size: 18px;
-  background-color: #eee;
-  text-align: center;
-  border: 1px dashed #e9ee;
   border-radius: 10px;
   padding: 10px;
 `;
 
+
 export const ButtonSubmit = styled.TouchableOpacity`
   height: 50px;
   width: 80%;
-  background: #21e6;
+  background: #268;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 50px;
   border: 1px solid #eee;
   border-radius: 10px;
 `;
+
+export const TipArea = styled.View`
+  margin-top: 50px;
+  flex-direction: row;
+`;
+export const TipItem = styled.TouchableOpacity`
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+`;
+export const TipValue = styled.Text`
+  font-size: 22px;
+  padding: 5px 20px;
+  margin: 0 10px;
+  background-color: #2e2e2e;
+  border-radius: 4px;
+  color: white;
+
+`;
+
 
 export const TextButton = styled.Text`
   align-self: center;

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+// import { View, Text, Button } from 'react-native';
 import {
   Container,
   HeaderText,
-  FormInput,
   InputValue,
-  InputTip,
+  TipArea,
+  TipItem,
+  TipValue,
   ButtonSubmit,
   TextButton,
   ContainerValue,
@@ -15,16 +17,15 @@ import {
 const Home = () => {
 
   const [bill, setBill ] = useState('');
-  const [tip, setTip ] = useState('');
+  const [tip, setTip ] = useState(10);
   const [showResult, setShowResult] = useState(false);
 
   const handleCalc = () => {
     setShowResult(!showResult);
     let newBill = parseFloat(bill);
-    let newTip = parseFloat(tip);
 
     if(newBill){
-      setTip( (newTip/100) * newBill);
+      setTip( (tip/100) * newBill);
     }else {
       alert("Digite o valor da conta")
     }
@@ -33,23 +34,25 @@ const Home = () => {
   return (
     <Container>
       <HeaderText>Calculadora de Gorjeta</HeaderText>
-      <FormInput>
         <InputValue
           keyboardType="numeric"
           placeholder="Valor da Conta"
           value={bill}
           onChangeText={number => setBill(number)}
-          />
-        <InputTip 
-          keyboardType="numeric"
-          placeholder="% Gorjeta"
-          value={tip}
-          onChangeText={number => setTip(number)}
-          />
-      </FormInput>
+        />
+      <TipArea>
+        <TipItem><TipValue>5%</TipValue></TipItem>
+
+        <TipItem><TipValue>10%</TipValue></TipItem>
+
+        <TipItem><TipValue>15%</TipValue></TipItem>
+
+        <TipItem><TipValue>20%</TipValue></TipItem>
+
+      </TipArea>
+
       <ButtonSubmit
        onPress={handleCalc}
-
       >
         <TextButton>{!showResult ? 'Clique para calcular' : 'Clique para calcular novamente'}</TextButton>
       </ButtonSubmit>
