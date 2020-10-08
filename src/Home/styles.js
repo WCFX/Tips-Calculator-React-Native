@@ -12,12 +12,29 @@ export const HeaderText = styled.Text`
   margin-bottom: 15px;
 `;
 
+export const FormInput = styled.View`
+  flex-direction: row;
+  margin-bottom: 50px;
+`;
 
-export const Input = styled.TextInput`
-  width: 80%;
+export const InputValue = styled.TextInput`
+  width: 50%;
+  margin: 0 20px;
   height: 50px;
   font-size: 18px;
   background-color: #eee;
+  text-align: center;
+  border: 1px dashed #e9ee;
+  border-radius: 10px;
+  padding: 10px;
+`;
+export const InputTip = styled.TextInput`
+  width: 30%;
+  margin: 0 20px;
+  height: 50px;
+  font-size: 18px;
+  background-color: #eee;
+  text-align: center;
   border: 1px dashed #e9ee;
   border-radius: 10px;
   padding: 10px;

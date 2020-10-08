@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import {
   Container,
   HeaderText,
-  Input,
+  FormInput,
+  InputValue,
+  InputTip,
   ButtonSubmit,
   TextButton,
   ContainerValue,
@@ -13,15 +15,16 @@ import {
 const Home = () => {
 
   const [bill, setBill ] = useState('');
-  const [tip, setTip ] = useState(0);
+  const [tip, setTip ] = useState('');
   const [showResult, setShowResult] = useState(false);
 
   const handleCalc = () => {
     setShowResult(!showResult);
     let newBill = parseFloat(bill);
+    let newTip = parseFloat(tip);
 
     if(newBill){
-      setTip( (10/100) * newBill);
+      setTip( (newTip/100) * newBill);
     }else {
       alert("Digite o valor da conta")
     }
@@ -30,12 +33,20 @@ const Home = () => {
   return (
     <Container>
       <HeaderText>Calculadora de Gorjeta</HeaderText>
-      <Input 
-        keyboardType="numeric"
-        placeholder="Digite aqui o valor da conta"
-        value={bill}
-        onChangeText={number => setBill(number)}
-      />
+      <FormInput>
+        <InputValue
+          keyboardType="numeric"
+          placeholder="Valor da Conta"
+          value={bill}
+          onChangeText={number => setBill(number)}
+          />
+        <InputTip 
+          keyboardType="numeric"
+          placeholder="% Gorjeta"
+          value={tip}
+          onChangeText={number => setTip(number)}
+          />
+      </FormInput>
       <ButtonSubmit
        onPress={handleCalc}
 
@@ -47,17 +58,17 @@ const Home = () => {
       <>
         <ContainerValue>
           <InformValue>valor da conta</InformValue>
-          <Value>R$ {bill}</Value>
+          <Value>R${(bill).toFixed(2)}</Value>
         </ContainerValue>
         
         <ContainerValue>
           <InformValue>valor da gorjeta </InformValue>
-          <Value>R$ {tip}</Value>
+          <Value>R$ {(tip).toFixed(2)}</Value>
         </ContainerValue>
         
         <ContainerValue>
           <InformValue>valor total da conta </InformValue>
-          <Value>R$ {parseFloat(bill) + tip}</Value>
+          <Value>R${(bill) + (tip).toFixed(2)}</Value>
         </ContainerValue>
       </>
       }
