@@ -1,84 +1,85 @@
 import styled from 'styled-components/native';
-
-export const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  margin-top: 50px;
+ 
+export const Page = styled.SafeAreaView`
+  flex:1;
+  align-items:center;
+  width: 100%;
+  height: 100%;
 `;
 
 export const HeaderText = styled.Text`
-  font-size: 24px;
-  color: #268;
-  margin-bottom: 15px;
+  font-size:25px;
+  margin-top: 50px;
 `;
 
-export const InputValue = styled.TextInput`
-  width: 50%;
-  margin: 0 20px;
+export const Input = styled.TextInput`
+  width:90%;
   height: 50px;
-  font-size: 18px;
-  background-color: #eee;
-  text-align: center;
-  border-radius: 10px;
-  padding: 10px;
+  font-size:18px;
+  background-color:#EEE;
+  margin: 20px 0;  
+  border-radius:10px;
+  padding:10px;
 `;
 
+export const PctArea = styled.View`
+  flex-direction:row;
+  width: 20%;
+  justify-content: center;
+  margin-bottom:20px;
+`;
 
-export const ButtonSubmit = styled.TouchableOpacity`
+export const PctItem = styled.TouchableHighlight`
   height: 50px;
   width: 80%;
-  background: #268;
-  justify-content: center;
-  margin-top: 50px;
-  border: 1px solid #eee;
-  border-radius: 10px;
-`;
-
-export const TipArea = styled.View`
-  margin-top: 50px;
-  flex-direction: row;
-`;
-export const TipItem = styled.TouchableOpacity`
-  text-align: center;
   justify-content: center;
   align-items: center;
-`;
-export const TipValue = styled.Text`
-  font-size: 22px;
-  padding: 5px 20px;
-  margin: 0 10px;
-  background-color: #2e2e2e;
-  border-radius: 4px;
-  color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+  margin: 0 20px;
 
 `;
 
+export const PctText = styled.Text`
+  color: #0888;
+  font-weight: bold;
+  font-size: 18px;
+`;
 
-export const TextButton = styled.Text`
-  align-self: center;
-  font-size: 22px;
-  letter-spacing: 1px;
-  color: #eee;
+export const CalcButton = styled.TouchableHighlight`
+  height: 50px;
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0 30px 0;
+`;
+export const CalcText = styled.Text`
+  font-size: 28px;
+  color: #0888;
   font-weight: bold;
 `;
 
-export const ContainerValue = styled.View`
-  margin-top: 20px;
-  height: 50px;
-  border: 1px dashed #e999;
+export const ResultArea = styled.View`
   width: 80%;
-  background: #eee;
-  justify-content: center;
+  height: 250px;
+  border: 3px dashed black;
+  border-radius: 6px;
   align-items: center;
+  justify-content: center;
 `;
-export const InformValue = styled.Text`
-  text-transform: uppercase;
-  padding-bottom: 10px;
-
+export const ResultItemTitle = styled.Text`
+  font-size:18px;
+  font-weight:bold;
+  width: 100%;
+  text-align: center;
+  background: #eee;
+  color: #0888;
+  padding: 2px;
 `;
-
-
-export const Value = styled.Text`
-  color: #e11445;
+export const ResultItem = styled.Text`
+  font-size:15px;
+  margin: 20px 0;
+  font-weight: bold;
 `;
-

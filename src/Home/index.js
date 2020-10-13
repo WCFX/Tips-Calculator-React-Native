@@ -1,81 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { View, Text, Button } from 'react-native';
 import {
-  Container,
+  Page,
   HeaderText,
-  InputValue,
-  TipArea,
-  TipItem,
-  TipValue,
-  ButtonSubmit,
-  TextButton,
-  ContainerValue,
-  InformValue,
-  Value
+  Input,
+  PctArea,
+  PctItem,
+  PctText,
+  CalcButton,
+  CalcText,
+  ResultArea,
+  ResultItemTitle,
+  ResultItem,
+
 } from './styles';
 
 const Home = () => {
 
-  const [bill, setBill ] = useState('');
-  const [tip, setTip ] = useState(10);
-  const [showResult, setShowResult] = useState(false);
+  const [bill, setBill] = useState('');
+  const [tip, setTip] = useState(0);
+  const [pct, setPct] = useState(10);
 
   const handleCalc = () => {
-    setShowResult(!showResult);
-    let newBill = parseFloat(bill);
-
-    if(newBill){
-      setTip( (tip/100) * newBill);
-    }else {
-      alert("Digite o valor da conta")
+    let nBill = parseFloat(bill);
+    
+    if(nBill) {
+      setTip( (pct/100) * nBill );
     }
   }
 
+  useEffect(()=>{
+    handleCalc();
+  }, [pct]);
+
+
   return (
-    <Container>
+    <Page>
       <HeaderText>Calculadora de Gorjeta</HeaderText>
-        <InputValue
-          keyboardType="numeric"
-          placeholder="Valor da Conta"
-          value={bill}
-          onChangeText={number => setBill(number)}
-        />
-      <TipArea>
-        <TipItem><TipValue>5%</TipValue></TipItem>
+      <Input
+        placeholder="Quanto deu a conta?"
+        placeholderTextColor="#b1b1b1"
+        keyboardType="numeric"
+        value={bill}
+        onChangeText={n=>setBill(n)}
+      />
 
-        <TipItem><TipValue>10%</TipValue></TipItem>
+      <PctArea>
+        <PctItem 
+          onFocus={true}
+          onPress={()=>setPct(5)} >
+          <PctText>5%</PctText></PctItem>
 
-        <TipItem><TipValue>15%</TipValue></TipItem>
+        <PctItem onPress={()=>setPct(10)}><PctText>10% </PctText></PctItem>
 
-        <TipItem><TipValue>20%</TipValue></TipItem>
+        <PctItem onPress={()=>setPct(15)}><PctText>15%</PctText></PctItem>
 
-      </TipArea>
+        <PctItem onPress={()=>setPct(20)}><PctText>20%</PctText></PctItem>
 
-      <ButtonSubmit
-       onPress={handleCalc}
-      >
-        <TextButton>{!showResult ? 'Clique para calcular' : 'Clique para calcular novamente'}</TextButton>
-      </ButtonSubmit>
-      
-      {showResult &&
-      <>
-        <ContainerValue>
-          <InformValue>valor da conta</InformValue>
-          <Value>R${(bill).toFixed(2)}</Value>
-        </ContainerValue>
-        
-        <ContainerValue>
-          <InformValue>valor da gorjeta </InformValue>
-          <Value>R$ {(tip).toFixed(2)}</Value>
-        </ContainerValue>
-        
-        <ContainerValue>
-          <InformValue>valor total da conta </InformValue>
-          <Value>R${(bill) + (tip).toFixed(2)}</Value>
-        </ContainerValue>
-      </>
+      </PctArea>
+
+      <CalcButton onPress={handleCalc}><CalcText>Calcular...</CalcText></CalcButton>
+      {tip > 0 &&
+        <ResultArea>
+          <ResultItemTitle>Valor da Conta</ResultItemTitle>
+          <ResultItem>R$ {parseFloat(bill).toFixed(2)}</ResultItem>
+
+          <ResultItemTitle>Valor da Gorjeta</ResultItemTitle>
+          <ResultItem>R$ {tip.toFixed(2)} ({pct}%)</ResultItem>
+
+          <ResultItemTitle>Valor Total</ResultItemTitle>
+          <ResultItem>R$ {(parseFloat(bill) + tip).toFixed(2)}</ResultItem>
+        </ResultArea>
       }
-    </Container>
+    </Page>
   ) 
 }
 
